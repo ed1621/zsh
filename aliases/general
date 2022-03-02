@@ -8,6 +8,7 @@ alias src=". $ZDOTDIR/.zshrc"
 alias tmux="TERM=xterm-256color tmux"
 alias vim="nvim"
 alias ls="exa --icons --group-directories-first --sort=Name -a"
+alias lsone="ls --level=1 -T --git-ignore --ignore-glob='.git'"
 alias lstwo="ls --level=2 -T --git-ignore --ignore-glob='.git'"
 alias lst="ls --tree --git-ignore --ignore-glob='.git'"
 alias lsa="ls -hl"
@@ -50,31 +51,19 @@ alias ~="cd ~"
 alias personal="cd ~/code/personal"
 alias qmkf="personal && cd qmk_firmware"
 alias qmku="personal && cd qmk_firmware/users/ed1621"
-alias qmkk="personal && cd qmk_firmware/keyboards/ergodox_ez/keymaps/personal"
+alias qmkk="personal && cd qmk_firmware/keyboards/handwired/dactyl_manuform/4x6_5/keymaps/ed1621"
 alias config="cd $XDG_CONFIG_HOME"
 alias nvimhome="cd $NVIM_HOME"
+alias zshhome="cd $ZDOTDIR"
 alias dotfiles="personal && cd dotfiles"
 alias learning="personal && cd learning"
 alias katas="personal && cd katas"
 alias zet="personal && cd zk"
 
 # run applications
-alias glr="gitlab-runner exec docker"
-alias spark="~/code/spark/bin/spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1"
+alias spark="amm12 --predef ~/.ammonite/sparkInit.sc"
 alias sparkSubmit="~/code/spark/bin/spark-submit"
 alias ksql='docker exec -it ksqldb-cli ksql http://ksqldb-server:8088'
-
-## Node
-alias ns='npm start'
-alias nr='npm run'
-alias nrb='npm run build'
-alias nsd='npm run start:dev'
-alias ni='npm install'
-alias nt='npm run test'
-alias ntu='npm run test:unit'
-alias ntuw='npm run test:unit:watch'
-alias nti='npm run test:integration'
-alias ntiw='npm run test:integration:watch'
 
 #Postgres
 alias pgLocal='pgcli postgres://postgres@localhost:5432/postgres'

@@ -1,0 +1,143 @@
+#work specific
+if [[ "$(hostname 2> /dev/null)" == *"EduMart"* ]]; then
+  . $ZDOTDIR/aliases/work
+fi
+
+## System
+alias src=". $ZDOTDIR/.zshrc"
+alias tmux="TERM=xterm-256color tmux"
+alias vim="nvim"
+alias ls="exa --icons --group-directories-first --sort=Name -a"
+alias lstwo="ls --level=2 -T --git-ignore --ignore-glob='.git'"
+alias lst="ls --tree --git-ignore --ignore-glob='.git'"
+alias lsa="ls -hl"
+alias grep="rg"
+alias cat="bat --paging=never"
+alias venv="python3 -m venv ./venv/ && source ./venv/bin/activate"
+alias k="kubectl"
+alias nnn="nnn -P p"
+alias vimcomp="vim +PackerCompile +qa"
+alias checkaliases="cat $ZDOTDIR/.zsh_aliases"
+
+#kyria keyboard stuff
+alias qmkleft="qmk flash -bl avrdude"
+alias qmkright="qmk flash -bl dfu"
+
+## editing files
+alias tmuxrc="vim $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias kittyrc="vim $XDG_CONFIG_HOME/kitty/kitty.conf"
+
+alias vimrc="vim $NVIM_HOME/init.lua"
+alias plugins="vim $NVIM_HOME/lua/plugins/init.lua"
+alias mappings="vim $NVIM_HOME/lua/core/mappings.lua"
+alias commands="vim $NVIM_HOME/lua/vimscript/commands.vim"
+alias options="vim $NVIM_HOME/lua/core/options.lua"
+alias ideavimrc="vim ~/.ideavimrc"
+
+alias zshrc="vim $ZDOTDIR/.zshrc"
+alias zshalias="vim $ZDOTDIR/aliases/general"
+alias workalias="vim $ZDOTDIR/aliases/work"
+alias workfunctions="vim $ZDOTDIR/functions/work"
+alias sheldonrc="vim $XDG_CONFIG_HOME/sheldon/plugins.toml"
+alias gitconfig="vim ~/.gitconfig"
+alias glci="vim ./.gitlab-ci.yml"
+
+#overriding git shortcuts
+alias gd="git difftool"
+
+# file navigation
+alias ~="cd ~"
+alias personal="cd ~/code/personal"
+alias qmkf="personal && cd qmk_firmware"
+alias qmku="personal && cd qmk_firmware/users/ed1621"
+alias qmkk="personal && cd qmk_firmware/keyboards/ergodox_ez/keymaps/personal"
+alias config="cd $XDG_CONFIG_HOME"
+alias nvimhome="cd $NVIM_HOME"
+alias dotfiles="personal && cd dotfiles"
+alias learning="personal && cd learning"
+alias katas="personal && cd katas"
+alias zet="personal && cd zk"
+
+# run applications
+alias glr="gitlab-runner exec docker"
+alias spark="~/code/spark/bin/spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1"
+alias sparkSubmit="~/code/spark/bin/spark-submit"
+alias ksql='docker exec -it ksqldb-cli ksql http://ksqldb-server:8088'
+
+## Node
+alias ns='npm start'
+alias nr='npm run'
+alias nrb='npm run build'
+alias nsd='npm run start:dev'
+alias ni='npm install'
+alias nt='npm run test'
+alias ntu='npm run test:unit'
+alias ntuw='npm run test:unit:watch'
+alias nti='npm run test:integration'
+alias ntiw='npm run test:integration:watch'
+
+#Postgres
+alias pgLocal='pgcli postgres://postgres@localhost:5432/postgres'
+
+#DOCKER
+##########
+# Compose #
+##########
+alias dcy='vim docker-compose.yml'
+alias dc='docker-compose'
+alias dcu='docker-compose up -d'
+alias dcub='docker-compose up --build --force-recreate -d'
+alias dcd='docker-compose down'
+alias dce='docker-compose exec'
+alias dcps='docker-compose ps'
+alias wdcps='watch docker-compose ps'
+alias dkt='docker-compose exec broker kafka-topics'
+alias dkacp='docker-compose exec schema-registry kafka-avro-console-producer'
+alias dcp='docker-compose exec broker kafka-console-producer'
+alias dcc='docker-compose exec broker kafka-console-consumer'
+alias ksql-datagen='docker-compose exec ksql-datagen ksql-datagen'
+
+##########
+# Images #
+##########
+alias di='docker images'
+alias drmi='docker rmi'
+alias dbu='docker build'
+alias dbut='docker build -t'
+alias drmi_all='docker rmi $* $(docker images -a -q) --force'
+alias drmi_dang='docker rmi $* $(docker images -q -f "dangling=true")'
+alias dhi='docker history $*'
+dhi_neat() {
+  ### dhi_neat <image name> [extra `docker history` options]
+  docker history "${1}" \
+    --format "{{ .Size }}\t{{ .CreatedBy }}" \
+    ${2:-} |
+    sort \
+      --key=1 \
+      --human-numeric-sort \
+      --reverse
+}
+
+##############
+# Containers #
+##############
+alias dps='docker ps'
+alias drit='docker run -it'
+alias drrm='docker run -it --rm'
+alias deit='docker exec -it'
+alias derm='docker exec -it --rm'
+alias dlog='docker logs'
+alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $*'
+alias dstop_all='docker stop $* $(docker ps -q -f "status=running")'
+alias drm='docker rm'
+alias drm_stopped='docker rm $* $(docker ps -q -f "status=exited")'
+alias drmv_stopped='docker rm -v $* $(docker ps -q -f "status=exited")'
+alias drm_all='docker rm $* $(docker ps -a -q)'
+alias drmv_all='docker rm -v $* $(docker ps -a -q)'
+
+###########
+# Volumes #
+###########
+alias dvls='docker volume ls $*'
+alias dvrm_all='docker volume rm $(docker volume ls -q)'
+alias dvrm_dang='docker volume rm $(docker volume ls -q -f "dangling=true")'

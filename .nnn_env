@@ -1,0 +1,5 @@
+export NNN_OPTS="H"
+export NNN_OPENER="/usr/local/bin/nvim"
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG="p:preview-tui"
+

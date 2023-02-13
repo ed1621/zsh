@@ -27,16 +27,17 @@ alias qmkright="qmk flash -bl dfu"
 ## editing files
 alias tmuxrc="vim $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias kittyrc="vim $XDG_CONFIG_HOME/kitty/kitty.conf"
+alias wezrc="vim $XDG_CONFIG_HOME/wezterm/wezterm.lua"
 
 alias vimrc="vim $NVIM_HOME/init.lua"
 alias plugins="vim $NVIM_HOME/lua/plugins/init.lua"
 alias mappings="vim $NVIM_HOME/lua/core/mappings.lua"
-alias commands="vim $NVIM_HOME/lua/vimscript/commands.vim"
 alias options="vim $NVIM_HOME/lua/core/options.lua"
 alias ideavimrc="vim ~/.ideavimrc"
 
 alias zshrc="vim $ZDOTDIR/.zshrc"
 alias zshalias="vim $ZDOTDIR/aliases/general"
+alias zshfunctions="vim $ZDOTDIR/functions/general"
 alias workalias="vim $ZDOTDIR/aliases/work"
 alias workfunctions="vim $ZDOTDIR/functions/work"
 alias sheldonrc="vim $XDG_CONFIG_HOME/sheldon/plugins.toml"
@@ -49,6 +50,8 @@ alias gd="git difftool"
 # file navigation
 alias ~="cd ~"
 alias personal="cd ~/code/personal"
+alias wpocs="work && cd pocs"
+alias ppocs="personal && cd pocs"
 alias qmkf="personal && cd qmk_firmware"
 alias qmku="personal && cd qmk_firmware/users/ed1621"
 alias qmkk="personal && cd qmk_firmware/keyboards/handwired/dactyl_manuform/4x6_5/keymaps/ed1621"
@@ -61,7 +64,7 @@ alias katas="personal && cd katas"
 alias zet="personal && cd zk"
 
 # run applications
-alias spark="amm12 --predef ~/.ammonite/sparkInit.sc"
+alias spark="amm --predef ~/.ammonite/sparkInit.sc"
 alias sparkSubmit="~/code/spark/bin/spark-submit"
 alias ksql='docker exec -it ksqldb-cli ksql http://ksqldb-server:8088'
 
@@ -80,10 +83,10 @@ alias dcd='docker-compose down'
 alias dce='docker-compose exec'
 alias dcps='docker-compose ps'
 alias wdcps='watch docker-compose ps'
-alias dkt='docker-compose exec broker kafka-topics'
+alias dkt='docker-compose exec kafka-broker kafka-topics'
 alias dkacp='docker-compose exec schema-registry kafka-avro-console-producer'
-alias dcp='docker-compose exec broker kafka-console-producer'
-alias dcc='docker-compose exec broker kafka-console-consumer'
+alias dcp='docker-compose exec kafka-broker kafka-console-producer'
+alias dcc='docker-compose exec kafka-broker kafka-console-consumer'
 alias ksql-datagen='docker-compose exec ksql-datagen ksql-datagen'
 
 ##########
@@ -96,16 +99,6 @@ alias dbut='docker build -t'
 alias drmi_all='docker rmi $* $(docker images -a -q) --force'
 alias drmi_dang='docker rmi $* $(docker images -q -f "dangling=true")'
 alias dhi='docker history $*'
-dhi_neat() {
-  ### dhi_neat <image name> [extra `docker history` options]
-  docker history "${1}" \
-    --format "{{ .Size }}\t{{ .CreatedBy }}" \
-    ${2:-} |
-    sort \
-      --key=1 \
-      --human-numeric-sort \
-      --reverse
-}
 
 ##############
 # Containers #
@@ -123,6 +116,7 @@ alias drm_stopped='docker rm $* $(docker ps -q -f "status=exited")'
 alias drmv_stopped='docker rm -v $* $(docker ps -q -f "status=exited")'
 alias drm_all='docker rm $* $(docker ps -a -q)'
 alias drmv_all='docker rm -v $* $(docker ps -a -q)'
+alias dcls='docker container ls'
 
 ###########
 # Volumes #

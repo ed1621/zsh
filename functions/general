@@ -77,21 +77,3 @@ function ghc_id() {
   ghcid "--command=ghci $1.hs"
 }
 
-function dhi_neat() {
-  ### dhi_neat <image name> [extra `docker history` options]
-  docker history "${1}" \
-    --format "{{ .Size }}\t{{ .CreatedBy }}" \
-    ${2:-} |
-    sort \
-      --key=1 \
-      --human-numeric-sort \
-      --reverse
-}
-
-function getaliases() {
-  cat $ZDOTDIR/aliases/* | grep $1
-}
-
-function title() {
-  echo -ne "\x1b]0;$1\x1b\\"
-}

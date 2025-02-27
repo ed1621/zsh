@@ -14,6 +14,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export CONFIG="$XDG_CONFIG_HOME"
 export ZK_NOTEBOOK_DIR="$HOME/code/personal/zk"
 export EDITOR="nvim"
+export AZCOPY_AUTO_LOGIN_TYPE="AZCLI"
 
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
@@ -25,8 +26,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home"
-export SPARK_HOME="$HOME/code/spark"
+export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+export SPARK_HOME="/home/linuxbrew/.linuxbrew/opt/apache-spark/libexec"
 export NVIM_HOME="$CONFIG/nvim"
 export USR_OPT="/usr/local/opt"
 

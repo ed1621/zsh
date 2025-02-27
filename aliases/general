@@ -1,5 +1,5 @@
 #work specific
-if [[ "$(hostname 2> /dev/null)" == *"EduMart"* ]]; then
+if [[ "$(hostname 2> /dev/null)" == *"AP-J4NHVV3"* ]]; then
   . $ZDOTDIR/aliases/work
 fi
 
@@ -35,7 +35,7 @@ alias zshalias="vim $ZDOTDIR/aliases/general"
 alias workalias="vim $ZDOTDIR/aliases/work"
 alias workfunctions="vim $ZDOTDIR/functions/work"
 alias sheldonrc="vim $XDG_CONFIG_HOME/sheldon/plugins.toml"
-alias gitconfig="vim ~/.gitconfig"
+alias gitconfig="vim ~/.config/git/.gitconfig"
 alias glci="vim ./.gitlab-ci.yml"
 
 #overriding git shortcuts
@@ -52,6 +52,7 @@ alias config="cd $XDG_CONFIG_HOME"
 alias nvimhome="cd $NVIM_HOME"
 alias zshhome="cd $ZDOTDIR"
 alias dotfiles="personal && cd dotfiles"
+alias desktop="cd /mnt/c/Users/Eduardo.Martinez/Desktop"
 
 #DOCKER
 ##########
